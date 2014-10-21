@@ -33,16 +33,16 @@ if(isset($_POST['test'])) {
 
 ```php
 if(isset($_POST['test'])) {
-    if(PHP::isEmpty($_POST['email']) == FALSE) {
-        PHP::message("Email field empty.", "error");
-    } else if(PHP::validate($_POST['email'], "email") == FALSE) {
-        PHP::message("Email format incorrect.", "error");
+    if(EasyPHP::isEmpty($_POST['email']) == FALSE) {
+        EasyPHP::message("Email field empty.", "error");
+    } else if(EasyPHP::validate($_POST['email'], "email") == FALSE) {
+        EasyPHP::message("Email format incorrect.", "error");
     } else {
-        $emailAddress = PHP::sanitize($_POST['email'], "email");
-        PHP::message("Your Email: " . $emailAddress . ". You will be redirected in 3 seconds.", "message");
-        PHP::redirect("index.php", "timed", 3);
+        $emailAddress = EasyPHP::sanitize($_POST['email'], "email");
+        EasyPHP::message("Your Email: " . $emailAddress . ". You will be redirected in 3 seconds.", "message");
+        EasyPHP::redirect("index.php", "timed", 3);
     }           
-}      
+}        
 ```
 
 <b>Total Characters</b>: 584 characters
