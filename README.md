@@ -25,6 +25,10 @@ if(isset($_POST['test'])) {
 
 ```
 
+<b>Total Characters</b>: 670 characters
+<br/>
+<b>Average Characters Per Sentence</b>: 168
+
 <h3>With EasyPHP</h3>
 
 ```
@@ -41,20 +45,11 @@ if(isset($_POST['test'])) {
 }      
 ```
 
-I then did a character count test and the results were as shown below.
-
-<h3>Without EasyPHP</h3>
-
-<b>Total Characters</b>: 670 characters
-<br/>
-<b>Average Characters Per Sentence</b>: 168
-
-<h3>With EasyPHP</h3>
-
 <b>Total Characters</b>: 584 characters
 <br/>
 <b>Average Characters Per Sentence</b>: 146
 
-With a difference of 86 characters you can see it is quite a big margin and coding is quicker with EasyPHP.
+
+As the character count which I did shows EasyPHP has a difference of 86 characters and that is quite a big margin and coding is quicker and cleaner looking with EasyPHP.
 
 
