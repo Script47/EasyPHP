@@ -3,6 +3,8 @@ EasyPHP
 
 A class containing various PHP functions to make a developers life easier.
 
+<b>Developer</b>: Script47
+
 Example
 =======
 
@@ -10,7 +12,7 @@ I did simple test which involved a HTML text input and a submit button, the goal
 
 <h3>Without EasyPHP</h3>
 
-```
+```php
 if(isset($_POST['test'])) {
     if(!isset($_POST['email']) || empty($_POST['email'])) {
         echo "<font color='red'>Email field empty.</font>";
@@ -31,7 +33,7 @@ if(isset($_POST['test'])) {
 
 <h3>With EasyPHP</h3>
 
-```
+```php
 if(isset($_POST['test'])) {
     if(PHP::isEmpty($_POST['email']) == FALSE) {
         PHP::message("Email field empty.", "error");
