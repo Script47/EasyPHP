@@ -1,14 +1,12 @@
 EasyPHP
 =======
 
-A class containing various PHP functions to make a developers life easier.
-
-<b>Developer</b>: Script47
+A class containing various PHP functions to make a developers life easier. Please feel free to add things to the class so we can make a better class.
 
 Example
 =======
 
-I did simple test which involved a HTML text input and a submit button, the goal was to showoff the functions which are used in EasyPHP to show you how you can write code quicker and more clearly using it.
+I did simple test which involved a HTML text input and a submit button, the goal was to show the differences in not using EasyPHP class and using it.
 
 <h3>Without EasyPHP</h3>
 
@@ -51,7 +49,9 @@ if(isset($_POST['test'])) {
 <br/>
 <b>Average Characters Per Sentence</b>: 146
 
-
 As the character count which I did shows EasyPHP has a difference of 86 characters and that is quite a big margin and coding is quicker and cleaner looking with EasyPHP.
 
+Credits
+=======
 
+<b>Developer</b>: Script47
