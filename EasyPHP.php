@@ -9,17 +9,22 @@
  */
 class EasyPHP {
     /**
-     *
      * @var string - An array of emails which you'd like to inform in the log function. 
      */
     private static $mailTo = array(
         "example@example.com"
     );
     
+    /**
+     * @var string - DIR to the file you want to include. 
+     */
     private static $includes = array(
         "test.php"
     );
     
+    /**
+     * The autoload function don't forget to instantiate the object.
+     */
     public static function autoLoader() {
         foreach(self::$includes as $include) {
             require_once $include;
