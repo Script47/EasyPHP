@@ -5,12 +5,27 @@
  *
  * @author Script47
  * @copyright (c) 2014, Script47
- * @version 1.0
- * @example index.php - Some main examples.
+ * @version 1.1.0
  */
 class EasyPHP {
-    private $loggerSendTo = "";
-
+    /**
+     *
+     * @var string - An array of emails which you'd like to inform in the log function. 
+     */
+    private static $mailTo = array(
+        "example@example.com"
+    );
+    
+    private static $includes = array(
+        "test.php"
+    );
+    
+    public static function autoLoader() {
+        foreach(self::$includes as $include) {
+            require_once $include;
+        }
+    }
+    
     /**
      * Validate a variable, string, int, float or an email.
      * @param $input - The variable which you would like to validate.
@@ -31,6 +46,8 @@ class EasyPHP {
             case "email":
                 return filter_var($input, FILTER_VALIDATE_EMAIL) ? $input : FALSE;
                 break;
+            case "IP":
+                return filter_var($input, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) ? $input : filter_var($input, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) ? $input : FALSE;
         }
     }
     
@@ -65,13 +82,13 @@ class EasyPHP {
     public static function message($message, $type) {
         switch($type) {
             case "message":
-                echo "<font color='lightseagreen'> $message </font>";
+                return "<font color='lightseagreen'> $message </font>";
                 break;
             case "success":
-                echo "<font color='green'> $message </font>";
+                return "<font color='green'> $message </font>";
                 break;
             case "error":
-                echo "<font color='red'> $message </font>";
+                return "<font color='red'> $message </font>";
                 break;
         }
     }    
@@ -101,8 +118,6 @@ class EasyPHP {
         $IP = NULL;
         if(isset($_SERVER['HTTP_CLIENT_IP'])) {
             $IP = $_SERVER['HTTP_CLIENT_IP'];
-        } else if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $IP = $_SERVER['HTTP_X_FORWARDED_FOR'];
         } else if(isset($_SERVER['HTTP_X_FORWARDED'])) {
             $IP = $_SERVER['HTTP_X_FORWARDED'];
         } else if(isset($_SERVER['HTTP_FORWARDED_FOR'])) {
@@ -118,12 +133,53 @@ class EasyPHP {
     }
     
     /**
-     * A simple email error logger or general logger.
-     * @param string $message - The main contents of the email.
+     * Add an item to the log (errors.txt).
+     * @param $log - The log message you'd like to insert.
+     * @param bool $isErrorMajor - Allows you to check if the error in question is major or not, if the log is major then it will be emailed to all the emails from the $mailTo array. Otherwise it will be simply logged in the errors.txt files.
+     * @return bool - Returns TRUE for success, FALSE if anything goes wrong.
      */
-    public static function logger($message) {
-        $timeStamp = date("h:i:s d/m/Y");
-        mail($this->loggerSendTo, "PHP Logger", $message . PHP_EOL . PHP_EOL . "Sent On - " . $timeStamp, "From: $sendTo");
+    public static function log($log, $isErrorMajor = FALSE) {
+        if($isErrorMajor == null || $isErrorMajor == FALSE) {
+            if(file_exists("logs") == TRUE) {
+                $fileToBeOpened = fopen("logs/errors.txt", 'a');
+                $timestamp = date("d/m/Y h:i:s");
+               
+                fwrite($fileToBeOpened, "Minor Error ($timestamp) - " . $log . PHP_EOL . PHP_EOL);
+                fclose($fileToBeOpened);
+                return TRUE;
+            } else {
+                if(!mkdir("logs")) {
+                    trigger_error("Could not create logs directory.");
+                    return FALSE;
+                }
+            }
+        } else if($isErrorMajor == TRUE) {
+            if(file_exists("logs") == TRUE) {
+                $fileToBeOpened = fopen("logs/errors.txt", 'a');
+                $timestamp = date("d/m/Y h:i:s");
+               
+                fwrite($fileToBeOpened, "Major Error ($timestamp) - " . $log . PHP_EOL . PHP_EOL);
+                fclose($fileToBeOpened);
+ 
+                self::notify($log, $timestamp);
+                return TRUE;
+            } else {
+                if(!mkdir("logs")) {
+                    trigger_error("Could not create logs directory.");
+                }
+            }
+        }
+    }
+ 
+    /**
+     * Notifies the people from $mailTo array via email.
+     * @param $message - The email's main content.
+     * @param $logGeneratedOn - A timestamp of when the email was generated on.
+     */
+    public static function notify($message, $logGeneratedOn) {
+        foreach(self::$mailTo as $mailersList) {
+            mail($mailersList, "New Major Error Logged" . $message . PHP_EOL . PHP_EOL . "This log was generated on " . $logGeneratedOn . PHP_EOL . PHP_EOL . "The time above is set using the server time.", "From: Logs@EasyPHPClass\n");
+        }
     }
     
     /**
@@ -131,8 +187,8 @@ class EasyPHP {
      * @param $variable - The variable you'd like to check.
      * @return - TRUE if empty, otherwise the variable.
      */
-    public static function isEmpty($variable) {
-        return !isset($variable) || empty($variable) ? FALSE : $variable;
+    public static function isNotEmpty($variable) {
+        return isset($variable) || !empty($variable) ? $variable : FALSE;
     }
     
     /**
@@ -168,7 +224,7 @@ class EasyPHP {
      * @param string $input - The encoded string you'd like to decode.
      * @return string - Decoded string.
      */
-    public static function base64_url_decode($input) {
+    public static function decode($input) {
         return base64_decode(strtr($input, '-_,', '+/='));
     }
     
@@ -185,6 +241,15 @@ class EasyPHP {
     public static function destroySession() {
         session_unset();
         session_destroy();
+    }
+    
+    /**
+     * Debug a variable using this function.
+     * @param $debugVariable - The variable you'd like to debug.
+     * @return - Debugged results.
+     */
+    public static function debug($debugVariable) {
+        return var_dump($debugVariable);
     }
     
     /**
