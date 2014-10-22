@@ -3,7 +3,7 @@ EasyPHP
 
 A class containing various PHP functions to make a developers life easier. Please feel free to add things to the class so we can make a better class.
 
-<b>Version</b>: 1.0.0
+<b>Version</b>: 1.1.0
 
 Example
 =======
