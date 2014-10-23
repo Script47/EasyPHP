@@ -1,7 +1,7 @@
 EasyPHP License
 =======
 
-<b>The license may change at any time, it is on you to ensure that you're following it.</b>
+<b>The license may change at any time, it is on you to ensure that your adhere to it.</b>
 
 What you can't do?
 =======
