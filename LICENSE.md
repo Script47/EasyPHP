@@ -6,8 +6,9 @@ EasyPHP License
 What you can't do?
 =======
 
-<li>You may <i>not</i> sell any thing in this project as your own.</li>
-<li>You may <i>not</i> remove the commenting at the start of the file.</li>
+*You may <i>not</i> sell any thing in this project as your own.
+<br/>
+*You may <i>not</i> remove the commenting at the start of the file.
 
 What you can do?
 ======= 
