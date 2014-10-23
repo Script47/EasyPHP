@@ -13,7 +13,9 @@ What you can't do?
 What you can do?
 ======= 
 
-<li>You may edit, change or re-write any parts of the class but under no circumstances are you to assume that it is yours.</li>
+* You may edit, change or re-write any parts of the class but under no circumstances are you to assume that it is yours.
+
+=======
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
