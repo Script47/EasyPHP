@@ -274,7 +274,7 @@ class EasyPHP {
     /**
      * Destroys the created session.
      */
-    public function destroySession() {
+    public static function destroySession() {
         session_unset();
         session_destroy();
     }
@@ -294,5 +294,5 @@ class EasyPHP {
      */
     public static function endPage($message = NULL) {
         isset($message) && !empty($message) ? exit($message) : exit;
-    }
+    }   
 }
