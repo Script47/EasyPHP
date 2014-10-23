@@ -8,7 +8,7 @@ A class containing various PHP functions to make a developers life easier. Pleas
 Example
 =======
 
-<p style="text-align: justify;">I did simple test which involved a HTML text input and a submit button, the goal was to show the differences in not using EasyPHP class and using it.
+I did simple test which involved a HTML text input and a submit button, the goal was to show the differences in not using EasyPHP class and using it.
 
 <h3>Without EasyPHP</h3>
 
