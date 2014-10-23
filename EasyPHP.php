@@ -263,6 +263,10 @@ class EasyPHP {
         return new self;
     }
     
+    /**
+     * Return the session ID of the user.
+     * @return string - Session ID.
+     */
     public function sessionID() {
         return session_id();
     }
