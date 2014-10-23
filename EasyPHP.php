@@ -5,7 +5,7 @@
  *
  * @author Script47
  * @copyright (c) 2014, Script47
- * @version 1.1.0
+ * @version 1.1.3
  */
 class EasyPHP {
     /**
@@ -175,6 +175,30 @@ class EasyPHP {
             }
         }
     }
+    
+    /**
+     * Parse a string as BBCode.
+     * @param string $value - The string you'd like to parse.
+     * @return string - Return a parsed string.
+     */
+    public static function BBCode($value) {
+        $findAndReplace = array(
+            "[b]" => "<strong>",
+            "[/b]" => "</strong>",
+            "[i]" => "<i>",
+            "[/i]" => "</li>",
+            "[u]" => "<u>",
+            "[/u]" => "</u>",
+            "[s]" => "<s>",
+            "[/s]" => "</s>",
+            "[br]" => "<br/>",
+            "[li]" => "<li>",
+            "[/li]" => "</li>",
+            "[numli]" => "<ol><li>",
+            "[/numli]" => "</li></ol>"
+        );
+        return str_replace(array_keys($findAndReplace), array_values($findAndReplace), $value);
+    }
  
     /**
      * Notifies the people from $mailTo array via email.
@@ -182,9 +206,7 @@ class EasyPHP {
      * @param $logGeneratedOn - A timestamp of when the email was generated on.
      */
     public static function notify($message, $logGeneratedOn) {
-        foreach(self::$mailTo as $mailersList) {
-            mail($mailersList, "New Major Error Logged" . $message . PHP_EOL . PHP_EOL . "This log was generated on " . $logGeneratedOn . PHP_EOL . PHP_EOL . "The time above is set using the server time.", "From: Logs@EasyPHPClass\n");
-        }
+        return mail(implode(",", self::$mailTo), "New Major Error Logged" . $message . PHP_EOL . PHP_EOL . "This log was generated on " . $logGeneratedOn . PHP_EOL . PHP_EOL . "The time above is set using the server time.", "From: Logs@EasyPHPClass\n");
     }
     
     /**
@@ -238,12 +260,17 @@ class EasyPHP {
      */
     public static function createSession() {
         session_start();
+        return new self;
+    }
+    
+    public function sessionID() {
+        return session_id();
     }
     
     /**
      * Destroys the created session.
      */
-    public static function destroySession() {
+    public function destroySession() {
         session_unset();
         session_destroy();
     }
