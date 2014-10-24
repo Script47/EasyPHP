@@ -6,14 +6,15 @@ EasyPHP License
 What you can't do?
 =======
 
-* You may <i>not</i> sell any thing in this project as your own.
+* You may <i>not</i> sell any thing in this project (individually) as your own.
 <br/>
 * You may <i>not</i> remove the commenting at the start of the file.
 
 What you can do?
 ======= 
 
-* You may edit, change or re-write any parts of the class but under no circumstances are you to assume that it is yours.
+* You <i>can</i> edit, change or re-write any parts of the class but under no circumstances are you to assume that it is yours.
+* You <i>can</i> bundle this class with projects you may wish to sell, but the class should not affect the price.
 
 =======
 
