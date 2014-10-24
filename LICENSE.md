@@ -14,7 +14,7 @@ What you can do?
 ======= 
 
 * You <i>can</i> edit, change or re-write any parts of the class but under no circumstances are you to assume that it is yours.
-* You <i>can</i> bundle this class with projects you may wish to sell, but the class should not affect the price.
+* You <i>can</i> bundle this class with projects that you may wish to sell, but the class should not affect the price.
 
 =======
 
