@@ -5,7 +5,8 @@
  *
  * @author Script47
  * @copyright (c) 2014, Script47
- * @version 1.1.3
+ * @version 1.1.4
+ * @license https://github.com/Script47/EasyPHP/blob/master/LICENSE.md LICENSE.md
  */
 class EasyPHP {
     /**
@@ -101,18 +102,10 @@ class EasyPHP {
     /**
      * Redirect a user to a certain page.
      * @param string $page - The page name you'd like to redirect to.
-     * @param string $type - Instant or timed.
      * @param int $time - If timed then set a time limit.
      */
-    public static function redirect($page, $type, $time = "") {
-        switch($type) {
-            case "timed":
-                header("Refresh: $time; URL=$page");
-                break;
-            case "instant":
-                header("Location: $page");
-                break;
-        }
+    public static function redirect($page, $time = 0) {
+        header("Refresh: $time; URL=$page");
     }
     
     /**
