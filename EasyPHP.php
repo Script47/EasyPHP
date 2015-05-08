@@ -309,7 +309,7 @@ class EasyPHP {
     	foreach ($tokens as $unit => $text) {
     	    if ($diff < $unit) continue;
     	    $noUnits = floor($diff / $unit);
-    	    return $noUnits.' '.$text.(($niUnits>1)?'s ago':' ago');
+    	    return $noUnits.' '.$text.(($noUnits>1)?'s ago':' ago');
     	}
 	}
 }
