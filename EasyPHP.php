@@ -288,4 +288,28 @@ class EasyPHP {
     public static function endPage($message = NULL) {
         isset($message) && !empty($message) ? exit($message) : exit;
     }   
+	
+	/**
+	* Get a string of length of time elapsed since a specified time.
+	* @param int $time - The specified time to check
+	* @return - Returns a string stating the length of time ago.
+	*/
+	public static function timeSince($time){
+		$diff = time() - $time;
+		$tokens = array (
+    	    31536000 => 'year',
+    	    2592000 => 'month',
+    	    604800 => 'week',
+    	    86400 => 'day',
+    	    3600 => 'hour',
+    	    60 => 'min',
+    	    1 => 'sec'
+    	);
+    
+    	foreach ($tokens as $unit => $text) {
+    	    if ($diff < $unit) continue;
+    	    $noUnits = floor($diff / $unit);
+    	    return $noUnits.' '.$text.(($niUnits>1)?'s ago':' ago');
+    	}
+	}
 }
