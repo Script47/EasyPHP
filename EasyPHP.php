@@ -297,19 +297,19 @@ class EasyPHP {
 	public static function timeSince($time){
 		$diff = time() - $time;
 		$tokens = array (
-    	    31536000 => 'year',
-    	    2592000 => 'month',
-    	    604800 => 'week',
-    	    86400 => 'day',
-    	    3600 => 'hour',
-    	    60 => 'min',
-    	    1 => 'sec'
-    	);
+    		    31536000 => 'year',
+    		    2592000 => 'month',
+    		    604800 => 'week',
+    		    86400 => 'day',
+    		    3600 => 'hour',
+    		    60 => 'min',
+    		    1 => 'sec'
+    		);
     
-    	foreach ($tokens as $unit => $text) {
-    	    if ($diff < $unit) continue;
-    	    $noUnits = floor($diff / $unit);
-    	    return $noUnits.' '.$text.(($noUnits>1)?'s ago':' ago');
-    	}
+    		foreach ($tokens as $unit => $text) {
+    		    if ($diff < $unit) continue;
+    		    $noUnits = floor($diff / $unit);
+    		    return $noUnits.' '.$text.(($noUnits>1)?'s ago':' ago');
+    		}
 	}
 }
